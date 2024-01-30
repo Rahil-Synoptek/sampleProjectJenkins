@@ -11,35 +11,52 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class Tester {
 	static WebDriver driver;
 
 	@Test
 	public static void main_test() throws InterruptedException {
 		System.out.println("Test Started!!!");
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\chromedriver.exe");
+//		ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--headless=new");
+//        WebDriver driver = new ChromeDriver(options);
+//        driver.navigate().to("https://www.google.co.in/");  
+//        System.out.println("Open the URL!!!");
+//        
+//        driver.manage().window().maximize();  
+//        System.out.println("Maximize the browser!!!");
+// 
+//        driver.findElement(By.xpath("//textarea[@title='Search']")).sendKeys("selenium");      
+//        //getElement("//textarea[@title='Search']").sendKeys("selenium");
+//        System.out.println("Send value in Searchbox");
+//        
+//        driver.findElement(By.xpath("(//input[@value='Google Search'])[2]")).click();   
+//        //getElement("//input[@value='Google Search']").click();
+//        System.out.println("Click Search button.");
+//        
+//        Thread.sleep(5000);
+//        System.out.println("Wait 5 seconds...");
+//
+//        driver.quit();
+        
+        
+        
+        
+		System.setProperty("webdriver.http.factory", "jdk-http-client");
 		ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
-        WebDriver driver = new ChromeDriver(options);
-        driver.navigate().to("https://www.google.co.in/");  
-        System.out.println("Open the URL!!!");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--remote-allow-origins=*");
+		driver=new ChromeDriver(options);
+        driver.get("https://www.google.co.in/");
         
-        driver.manage().window().maximize();  
-        System.out.println("Maximize the browser!!!");
- 
-        driver.findElement(By.xpath("//textarea[@title='Search']")).sendKeys("selenium");      
-        //getElement("//textarea[@title='Search']").sendKeys("selenium");
-        System.out.println("Send value in Searchbox");
+        Thread.sleep(10000);
         
-        driver.findElement(By.xpath("(//input[@value='Google Search'])[2]")).click();   
-        //getElement("//input[@value='Google Search']").click();
-        System.out.println("Click Search button.");
-        
-        Thread.sleep(5000);
-        System.out.println("Wait 5 seconds...");
-
         driver.quit();
         System.out.println("Quit the browser!!!");
+
 	}
 	
 //	public static WebElement getElement(String locator){
